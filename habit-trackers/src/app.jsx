@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import "./app.css";
 import Habits from "./components/habits";
 import Navbar from "./components/navbar";
-import Reset from "./components/reset";
 
 class App extends Component{
   componentDidUpdate(){
@@ -20,17 +19,23 @@ class App extends Component{
 
 
   handleIncrement = (habit)=>{
-    const habits = [...this.state.habits]; //state를 직접 수정하는것은 좋지 않기 떄문에
-    const index = habits.indexOf(habit);
-    habits[index].count++;
-    this.setState({habits:habits});
+    const habits = this.state.habits.map(item=>{// 여기서 map은 새로운 habits를 만드는데 만약 서로 같은 id의 habit이라면 count를+1한채로 만든다.
+      if(item.id === habit.id){
+        return {...habit, count : habit.count +1};
+      }
+      return item;
+    })
+    this.setState({habits});//this.state와 내가 새로만든 state의 이름이 같은경우 habits:habits을 habits로 바꿔줄수 있다.
   };
   handleDecrement = (habit)=>{
-    const habits = [...this.state.habits];
-    const index = habits.indexOf(habit);
-    const count = habits[index].count-1;
-    habits[index].count = count<0 ? 0 :count;
-    this.setState({habits:habits});
+    const habits = this.state.habits.map(item=>{
+      if(item.id === habit.id){
+        const count =  habit.count -1
+        return {...habit, count : count<0 ? 0 : count};
+      }
+      return item;
+    })
+    this.setState({habits});
   };
   handleDelete = (habit)=>{
     const habits = this.state.habits.filter(item=>item.id!== habit.id);
@@ -44,30 +49,29 @@ class App extends Component{
     
   }
   handleReset = ()=>{
-    const habits = [...this.state.habits];
-    const mapHabits = habits.map(habits =>{
-      habits.count = 0 
-      return habits;
+    const habits = this.state.habits.map(habit=>{
+      if(habit.count!==0){
+        return {...habit, count : 0};
+      }
+      return habit;
     })
-    this.setState({habits:mapHabits});
+    this.setState({habits});
   }
 
   render() {
+    console.log("app");
     return (
       <div className="habitTracker">
         <Navbar
         totalCount={this.state.habits.filter(item => item.count>0).length}
         ></Navbar>
         <Habits
+          onReset={this.handleReset}
           onAdd={this.handleAddForm}
           habits={this.state.habits}
           onIncrement={this.handleIncrement}
           onDecrement={this.handleDecrement}
           onDelete={this.handleDelete}></Habits>
-        <Reset
-        habits={this.state.habits}
-        onReset={this.handleReset}
-        ></Reset>
       </div>
     )
   }

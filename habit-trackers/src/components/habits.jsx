@@ -5,6 +5,7 @@ import Add from "../components/add";
 class Habits extends Component {
   
   render() {
+    console.log("habits");
     return (
       <>
         <Add
@@ -21,6 +22,9 @@ class Habits extends Component {
               />//habit이라는 props에 habit이벤트 즉 habits를 전달해줌
           ))}
         </ul>
+        <button onClick={this.props.onReset} className='reset'>
+        Reset All
+      </button>
       </>
     );
   }

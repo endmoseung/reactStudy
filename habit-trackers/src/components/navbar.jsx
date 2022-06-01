@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
-class Navbar extends Component {
+class Navbar extends PureComponent {
 
   render() {
-    
+    console.log("navbar");
     return (
       <nav className='navbar'>
         <i className="fa-solid fa-leaf"></i>
