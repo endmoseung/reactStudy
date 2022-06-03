@@ -1,0 +1,30 @@
+.searchWrapper{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  
+}
+.youtubeLogo{
+  color: red;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.youtubeText{
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.searchInput{
+  flex-basis: 100%;
+  height: 40px;
+  font-size: 18px;
+  border: 1px solid gray;
+  outline: none;
+}
+.searchButton{
+  border: 1px solid gray;
+  height: 40px;
+  width: 50px
+}

@@ -1,0 +1,32 @@
+.container{
+  width: 48%;
+}
+.video{
+  display: flex;
+  -webkit-box-shadow: 3px 3px 4px 3px rgba(168,168,168,1);
+  -moz-box-shadow: 3px 3px 4px 3px rgba(168,168,168,1);
+  box-shadow: 3px 3px 4px 3px rgba(168,168,168,1);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: all 250ms ease-in;
+  cursor: pointer;
+  align-items: center;
+  background-color: white;
+  padding: 10px;
+}
+.video:hover{
+  transform: scale(1.02);
+}
+.thumbnail{
+  height: 100px;
+  width:30%;
+  margin-right: 10px;
+}
+.title{
+  font-size: 14px;
+  font-weight: bold;
+}
+.channel{
+  font-size: 12px;
+
+}
