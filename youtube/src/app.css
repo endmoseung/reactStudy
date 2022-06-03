@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* app */
+.appWrapper{
+  width: 1000px;
+  margin: auto;
+  background-color: bisque;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* search */
+.searchWrapper{
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 10px;
+  
+}
+.fa-youtube{
+  color: red;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+.youtubeText{
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: bold;
+}
+.searchInput{
+  width: 85%;
+  height: 30px;
+  font-size: 20px;
+  border: 1px solid gray;
+  outline: none;
+}
+.searchButton{
+  height: 30px;
+  width: 40px
 }
 
-.App-link {
-  color: #61dafb;
+/* video */
+.videoBox{
+  display: flex;
+  width: 48%;
+  background-color: white;
+  padding: 5px;
+  -webkit-box-shadow: 3px 3px 4px 3px rgba(168,168,168,1);
+  -moz-box-shadow: 3px 3px 4px 3px rgba(168,168,168,1);
+  box-shadow: 3px 3px 4px 3px rgba(168,168,168,1);
+  margin-right: 10px;
+  margin-bottom: 10px;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+}
+.videoBox:hover{
+  transform: scale(1.05);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.videoWrapper{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-left: 30px;
+}
+/* fonts */
+@font-face { 
+  font-family: 'ACCchildrenheartOTF-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2112-2@1.0/ACCchildrenheartOTF-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
