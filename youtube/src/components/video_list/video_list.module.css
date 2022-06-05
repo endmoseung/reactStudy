@@ -1,6 +1,9 @@
 .videoList{
   display: flex;
+  list-style: none;
   flex-wrap: wrap;
   width: 100%;
-  padding-left: 30px;
+  
+  margin: 0 ;
+  padding-left: 5px;
 }

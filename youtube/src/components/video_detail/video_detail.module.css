@@ -1,0 +1,16 @@
+.videoDetailWrapper{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.videoTitle{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+
+.iframe{
+  flex-grow: 1;
+  height: 400px;
+  margin-right: 10px;
+}
