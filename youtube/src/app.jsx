@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Search from "./components/search/search";
 import styles from "./app.module.css";
 import VideoList from "./components/video_list/video_list";
 import VideoDetail from "./components/video_detail/video_detail";
 
 const App = ({ youtube }) => {
+  // 여기서 나온 youtube는 index.js애서 클래스 선언하고 props로 받아온 아이
   const [videos, setVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
@@ -12,21 +13,24 @@ const App = ({ youtube }) => {
     setSelectedVideo(video);
   };
 
-  const search = (query) => {
-    setSelectedVideo(null);
-    youtube
-      .search(query) //
-      .then((videos) => {
-        setVideos(videos);
-        // console.log(selectedVideo);
-      });
-  };
+  const search = useCallback(
+    (query) => {
+      setSelectedVideo(null);
+      youtube
+        .search(query) //
+        .then((videos) => {
+          setVideos(videos);
+          // console.log(selectedVideo);
+        });
+    },
+    [youtube]
+  );
 
   useEffect(() => {
     youtube
       .mostPopular() //
       .then((videos) => setVideos(videos));
-  }, []);
+  }, [youtube]);
 
   return (
     <div className={styles.appWrapper}>

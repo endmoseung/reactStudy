@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "../video_item/video_item.module.css";
 
-const VideoItem = ({ video, onVideoClick, display }) => {
+const VideoItem = memo(({ video, onVideoClick, display }) => {
   //props를 deconstructing하여 결국 snippet으로 바꿔줬다
   const displayType = display === "list" ? styles.list : styles.grid; // a? b:c a가맞으면 b를하고 아니면 c를해라
   return (
@@ -22,6 +22,6 @@ const VideoItem = ({ video, onVideoClick, display }) => {
       </div>
     </li>
   );
-};
+});
 
 export default VideoItem;
