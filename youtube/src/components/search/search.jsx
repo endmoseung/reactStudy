@@ -9,7 +9,7 @@ const Search = memo((props) => {
     e.preventDefault();
     const inputValue = searchInput.current.value;
     window.scrollTo(0, 0);
-    formRef.current.reset();
+
     inputValue && props.onSearch(inputValue);
   };
   return (
