@@ -12,8 +12,10 @@ const App = ({ youtube }) => {
   const selectVideo = (video) => {
     setSelectedVideo(video);
   };
+  const moveToTOp = () => {};
 
   const search = useCallback(
+    //useCallback을 사용한 이유 : 결국 위에 있는 함수들은 props이 전달될떄 마다 새로 불러지는데 무분별한 불러짐을 막기위해 useeffect처럼 초반에 mount됬을때만 불러주기위해 뒤에 빈배열을 추가했다, 무분별한 usecallback남용 하지마라
     (query) => {
       setSelectedVideo(null);
       youtube
@@ -41,7 +43,7 @@ const App = ({ youtube }) => {
             <VideoDetail video={selectedVideo}></VideoDetail>
           </div>
         )}
-        <div className={styles.videoList} v>
+        <div className={styles.videoList}>
           <VideoList
             onVideoClick={selectVideo}
             videos={videos}

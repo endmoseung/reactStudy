@@ -8,6 +8,7 @@ const Search = memo((props) => {
   const submitHandle = (e) => {
     e.preventDefault();
     const inputValue = searchInput.current.value;
+    window.scrollTo(0, 0);
     formRef.current.reset();
     inputValue && props.onSearch(inputValue);
   };
@@ -17,10 +18,12 @@ const Search = memo((props) => {
       onSubmit={submitHandle}
       className={styles.searchWrapper}
     >
-      <div className={styles.youtubeLogo}>
+      <a href="http://localhost:3000/" className={styles.youtubeLogo}>
         <i className="fa-brands fa-youtube"></i>
-      </div>
-      <div className={styles.youtubeText}>Youtube</div>
+      </a>
+      <a href="http://localhost:3000/" className={styles.youtubeText}>
+        Youtube
+      </a>
       <input
         ref={searchInput}
         placeholder="검색"

@@ -5,6 +5,7 @@
   position: sticky;
   top: 0;
   background-color: white;
+  z-index: 1;
 }
 .youtubeLogo{
   color: red;
@@ -17,6 +18,8 @@
   cursor: pointer;
   margin-right: 10px;
   font-weight: bold;
+  text-decoration: none;
+  color: black;
 }
 .searchInput{
   flex-basis: 100%;
