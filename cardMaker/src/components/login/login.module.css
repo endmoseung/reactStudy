@@ -1,0 +1,23 @@
+@value makerWhite from '../../common/colors.css';
+@value makerGreen from '../../common/colors.css';
+@value makerLightGrey from '../../common/colors.css';
+.section{
+  padding: 10px;
+  background-color: makerWhite;
+}
+.list{
+  list-style: none;
+  padding: 0;
+}
+.button{
+  background-color: makerWhite;
+  border-radius: 10px;
+  border: 2px solid makerGreen;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.button:hover{
+  background-color: makerLightGrey;
+}

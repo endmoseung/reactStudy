@@ -1,0 +1,16 @@
+@value makerGrey from './common/colors.css';
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+.login{
+  width: 400px;
+  margin: auto;
+  text-align: center;
+}
+.loginWrapper{
+  display: flex;
+  align-items: center;
+  background-color: makerGrey;
+  height: 100vh;
+}
