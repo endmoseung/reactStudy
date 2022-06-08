@@ -9,7 +9,6 @@ const Search = memo((props) => {
     e.preventDefault();
     const inputValue = searchInput.current.value;
     window.scrollTo(0, 0);
-
     inputValue && props.onSearch(inputValue);
   };
   return (
@@ -18,10 +17,16 @@ const Search = memo((props) => {
       onSubmit={submitHandle}
       className={styles.searchWrapper}
     >
-      <a href="http://localhost:3000/" className={styles.youtubeLogo}>
+      <a
+        href="https://moseungyoutube.netlify.app/"
+        className={styles.youtubeLogo}
+      >
         <i className="fa-brands fa-youtube"></i>
       </a>
-      <a href="http://localhost:3000/" className={styles.youtubeText}>
+      <a
+        href="https://moseungyoutube.netlify.app/"
+        className={styles.youtubeText}
+      >
         Youtube
       </a>
       <input

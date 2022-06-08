@@ -1,7 +1,12 @@
 @value makerWhite from '../../common/colors.css';
 @value makerGreen from '../../common/colors.css';
 @value makerLightGrey from '../../common/colors.css';
+.loginWrapper{
+  width: 400px;
+  
+}
 .section{
+
   padding: 10px;
   background-color: makerWhite;
 }
@@ -16,7 +21,7 @@
   margin-bottom: 5px;
   width: 100%;
   padding: 8px 0;
-  cursor: pointer;
+  cursor: pointer;  
 }
 .button:hover{
   background-color: makerLightGrey;

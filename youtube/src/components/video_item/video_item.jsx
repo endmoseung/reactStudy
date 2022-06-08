@@ -15,7 +15,7 @@ const VideoItem = memo(({ video, onVideoClick, display }) => {
       }}
       className={`${styles.container} ${displayType}`}
     >
-      <div className={styles.video}>
+      <div className={styles.vide}>
         <img
           alt="로딩중입니다."
           src={video.snippet.thumbnails.default.url}

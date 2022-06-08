@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import CardMaker from "../cardMaker/cardMaker";
+import CardPreview from "../cardPreview/cardPreview";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./maker.module.css";
@@ -11,6 +13,7 @@ const Maker = ({ authService }) => {
   };
   useEffect(() => {
     authService.onAuthChange((user) => {
+      //user의 정보가 없다면 즉 로그아웃 됐다면 home으로 이동해라
       if (!user) {
         navigator("/");
       }
@@ -19,7 +22,14 @@ const Maker = ({ authService }) => {
   return (
     <section className={styles.wrapper}>
       <Header onLogout={onLogout}></Header>
-      <div className="main">23324</div>
+      <div className={styles.main}>
+        <div className={styles.cardMaker}>
+          <CardMaker></CardMaker>
+        </div>
+        <div className={styles.cardPreview}>
+          <CardPreview></CardPreview>
+        </div>
+      </div>
       <Footer></Footer>
     </section>
   );

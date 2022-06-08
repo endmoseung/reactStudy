@@ -4,6 +4,7 @@
 .header{
   background-color: makerGreen;
   position: relative;
+  padding: 10px;
 }
 .title{
   color: makerWhite;
