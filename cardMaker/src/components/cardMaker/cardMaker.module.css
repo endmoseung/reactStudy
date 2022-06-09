@@ -1,3 +1,9 @@
-.title{
-  color: red;
+@value makerLightGrey,makerGreen from '../../common/colors.css';
+.title {
+  color: makerGreen;
+}
+.editor {
+  border-right: 1px solid makerLightGrey;
+  height: 100%;
+  padding: 0.5em 2em;
 }

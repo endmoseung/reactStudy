@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CardMaker from "../cardMaker/cardMaker";
 import CardPreview from "../cardPreview/cardPreview";
@@ -7,6 +7,41 @@ import Header from "../header/header";
 import styles from "./maker.module.css";
 
 const Maker = ({ authService }) => {
+  const [cards, setCards] = useState([
+    {
+      id: "1",
+      name: "seungmo",
+      company: "opgg",
+      theme: "dark",
+      title: "frontend",
+      email: "tmdah900@gmail.com",
+      message: "go for it",
+      fileName: "seungmo",
+      fileURL: null,
+    },
+    {
+      id: "2",
+      name: "seungmo2",
+      company: "opgg",
+      theme: "light",
+      title: "frontend",
+      email: "tmdah900@gmail.com",
+      message: "go for it",
+      fileName: "seungmo",
+      fileURL: "seungmo.png",
+    },
+    {
+      id: "3",
+      name: "seungmo3",
+      company: "opgg",
+      theme: "colorful",
+      title: "frontend",
+      email: "tmdah900@gmail.com",
+      message: "go for it",
+      fileName: "seungmo",
+      fileURL: null,
+    },
+  ]);
   const navigator = useNavigate();
   const onLogout = () => {
     authService.logout();
@@ -24,10 +59,10 @@ const Maker = ({ authService }) => {
       <Header onLogout={onLogout}></Header>
       <div className={styles.main}>
         <div className={styles.cardMaker}>
-          <CardMaker></CardMaker>
+          <CardMaker cards={cards}></CardMaker>
         </div>
         <div className={styles.cardPreview}>
-          <CardPreview></CardPreview>
+          <CardPreview cards={cards}></CardPreview>
         </div>
       </div>
       <Footer></Footer>

@@ -1,11 +1,14 @@
 import React from "react";
+import CardEditForm from "../card_edit_form/card_edit_form";
 import styles from "./cardMaker.module.css";
 
-const CardMaker = (props) => {
+const CardMaker = ({ cards }) => {
   return (
-    <div>
+    <div className={styles.editor}>
       <h1 className={styles.title}>Card Maker</h1>
-      <h2>cdcdcdc</h2>
+      {cards.map((card) => (
+        <CardEditForm card={card}></CardEditForm>
+      ))}
     </div>
   );
 };
