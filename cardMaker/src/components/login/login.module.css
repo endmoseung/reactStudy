@@ -1,28 +1,30 @@
 @value makerWhite from '../../common/colors.css';
 @value makerGreen from '../../common/colors.css';
 @value makerLightGrey from '../../common/colors.css';
-.loginWrapper{
+.loginWrapper {
   width: 400px;
-  
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.section{
-
+.section {
   padding: 10px;
   background-color: makerWhite;
 }
-.list{
+.list {
   list-style: none;
   padding: 0;
 }
-.button{
+.button {
   background-color: makerWhite;
   border-radius: 10px;
   border: 2px solid makerGreen;
   margin-bottom: 5px;
   width: 100%;
   padding: 8px 0;
-  cursor: pointer;  
+  cursor: pointer;
 }
-.button:hover{
+.button:hover {
   background-color: makerLightGrey;
 }

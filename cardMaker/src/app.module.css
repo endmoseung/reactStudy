@@ -1,18 +1,27 @@
 @value makerGrey from './common/colors.css';
-*{
+* {
   box-sizing: border-box;
   margin: 0;
 }
-.login{
+.login {
   width: 1000px;
   margin: auto;
   text-align: center;
   display: flex;
   justify-content: center;
 }
-.loginWrapper{
+.loginWrapper {
   display: flex;
   align-items: center;
   background-color: makerGrey;
+  height: 100%;
+}
+
+#root {
   height: 100vh;
+}
+html,
+body {
+  height: 100vh;
+  overscroll-behavior-y: none;
 }

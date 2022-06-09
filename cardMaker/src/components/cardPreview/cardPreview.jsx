@@ -7,9 +7,13 @@ const CardPreview = ({ cards }) => {
     <div className={styles.cardPreview}>
       <h1 className={styles.title}>Card Preview</h1>
       <ul className={styles.cards}>
-        {cards.map((card) => (
-          <Card card={card}></Card>
-        ))}
+        {Object.keys(cards).map(
+          (
+            key //object.keys object안에 있는 key들의 value를 토대로 새로운 배열을 만듬
+          ) => (
+            <Card key={key} card={cards[key]}></Card>
+          )
+        )}
       </ul>
     </div>
   );

@@ -7,8 +7,8 @@ import Header from "../header/header";
 import styles from "./maker.module.css";
 
 const Maker = ({ authService }) => {
-  const [cards, setCards] = useState([
-    {
+  const [cards, setCards] = useState({
+    1: {
       id: "1",
       name: "seungmo",
       company: "opgg",
@@ -19,7 +19,7 @@ const Maker = ({ authService }) => {
       fileName: "seungmo",
       fileURL: null,
     },
-    {
+    2: {
       id: "2",
       name: "seungmo2",
       company: "opgg",
@@ -30,7 +30,7 @@ const Maker = ({ authService }) => {
       fileName: "seungmo",
       fileURL: "seungmo.png",
     },
-    {
+    3: {
       id: "3",
       name: "seungmo3",
       company: "opgg",
@@ -41,7 +41,8 @@ const Maker = ({ authService }) => {
       fileName: "seungmo",
       fileURL: null,
     },
-  ]);
+  });
+
   const navigator = useNavigate();
   const onLogout = () => {
     authService.logout();
@@ -54,16 +55,33 @@ const Maker = ({ authService }) => {
       }
     });
   });
-  const addCard = (card) => {
-    const updated = [...cards, card];
-    setCards(updated);
+  const deleteCard = (card) => {
+    setCards((cards) => {
+      const updated = { ...cards };
+      delete updated[card.id];
+      return updated;
+    });
+  };
+  const handleUpdate = (card) => {
+    // const updated = { ...cards }; //시시떄떄로 변하는 아이한테는 map이나 for을 돌리는건 성능에 상당히 좋지않다.
+    // updated[card.id] = card; // 현재 이벤트에 해당하는 card.id라는 key에 해당하는 card를 넣어준다
+    setCards((cards) => {
+      const updated = { ...cards };
+      updated[card.id] = card;
+      return updated;
+    });
   };
   return (
     <section className={styles.wrapper}>
       <Header onLogout={onLogout}></Header>
       <div className={styles.main}>
         <div className={styles.cardMaker}>
-          <CardMaker addCard={addCard} cards={cards}></CardMaker>
+          <CardMaker
+            updateCard={handleUpdate}
+            addCard={handleUpdate}
+            deleteCard={deleteCard}
+            cards={cards}
+          ></CardMaker>
         </div>
         <div className={styles.cardPreview}>
           <CardPreview cards={cards}></CardPreview>
