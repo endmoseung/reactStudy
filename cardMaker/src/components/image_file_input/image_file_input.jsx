@@ -24,8 +24,7 @@ const ImageFileInput = ({ imageUploader, name, onFileChange }) => {
         <label
           onClick={onButtonClick}
           className={name ? styles.buttonActive : styles.button}
-          for="ex_file"
-          htmlFor=""
+          htmlFor="ex_file"
         >
           {name || "no file"}
         </label>

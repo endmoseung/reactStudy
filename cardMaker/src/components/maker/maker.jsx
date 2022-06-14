@@ -24,7 +24,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
       setCards(cards);
     });
     return () => stopSync(); //component가 unmount 됐을때 불필요한 네트워크 사용을 최소화
-  }, [userId]); // mount됐을떄, userId가 바꼈을떄
+  }, [cardRepository, userId]); // mount됐을떄, userId가 바꼈을떄
 
   useEffect(() => {
     authService.onAuthChange((user) => {
@@ -35,7 +35,7 @@ const Maker = ({ FileInput, authService, cardRepository }) => {
         navigator("/");
       }
     });
-  });
+  }, [userId, authService, navigator]);
   const deleteCard = (card) => {
     setCards((cards) => {
       const updated = { ...cards };

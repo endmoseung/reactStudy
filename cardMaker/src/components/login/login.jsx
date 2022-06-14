@@ -15,10 +15,9 @@ const Login = ({ authService }) => {
   };
   const onLogin = (event) => {
     authService //
-      .login(event.currentTarget.textContent)
+      .login(event.currentTarget.textContent) //이게 login함수에 버튼내 이름을 전달해줌
       .then((data) => {
         goToMaker(data.user.uid);
-        console.log(data);
       }); // 데이터를 받아서 거기에 있는 uid의 정보를 넘겨줄것이다
   };
   useEffect(() => {
