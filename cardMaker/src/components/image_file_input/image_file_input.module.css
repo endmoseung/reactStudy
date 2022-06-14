@@ -1,0 +1,26 @@
+@value makerPink, makerLightGrey from '../../common/colors.css';
+.buttonActive {
+  display: inline-block;
+  width: 100%;
+  background-color: makerLightGrey;
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.8rem;
+  box-sizing: content-box;
+  padding: 10px 0;
+}
+.button:hover {
+  opacity: 0.8;
+}
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

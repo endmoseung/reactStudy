@@ -9,7 +9,7 @@ const CardPreview = ({ cards }) => {
       <ul className={styles.cards}>
         {Object.keys(cards).map(
           (
-            key //object.keys object안에 있는 key들의 value를 토대로 새로운 배열을 만듬
+            key //object.keys(x) x라는 object안에 있는 key들의 value를 토대로 새로운 배열을 만듬
           ) => (
             <Card key={key} card={cards[key]}></Card>
           )
