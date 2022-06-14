@@ -4,7 +4,7 @@ import styles from "./app.module.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Maker from "./components/maker/maker";
 
-const App = ({ FileInput, authService }) => {
+const App = ({ FileInput, authService, cardRepository }) => {
   return (
     <div className={styles.loginWrapper}>
       <div className={styles.login}>
@@ -17,7 +17,11 @@ const App = ({ FileInput, authService }) => {
             <Route
               path="/maker"
               element={
-                <Maker FileInput={FileInput} authService={authService}></Maker>
+                <Maker
+                  cardRepository={cardRepository}
+                  FileInput={FileInput}
+                  authService={authService}
+                ></Maker>
               }
             ></Route>
           </Routes>

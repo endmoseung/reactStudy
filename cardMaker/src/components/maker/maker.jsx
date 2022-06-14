@@ -1,56 +1,37 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import CardMaker from "../cardMaker/cardMaker";
 import CardPreview from "../cardPreview/cardPreview";
 import Footer from "../footer/footer";
 import Header from "../header/header";
 import styles from "./maker.module.css";
 
-const Maker = ({ FileInput, authService }) => {
-  const [cards, setCards] = useState({
-    1: {
-      id: "1",
-      name: "seungmo",
-      company: "opgg",
-      theme: "dark",
-      title: "frontend",
-      email: "tmdah900@gmail.com",
-      message: "go for it",
-      fileName: "seungmo",
-      fileURL: null,
-    },
-    2: {
-      id: "2",
-      name: "seungmo2",
-      company: "opgg",
-      theme: "light",
-      title: "frontend",
-      email: "tmdah900@gmail.com",
-      message: "go for it",
-      fileName: "seungmo",
-      fileURL: "seungmo.png",
-    },
-    3: {
-      id: "3",
-      name: "seungmo3",
-      company: "opgg",
-      theme: "colorful",
-      title: "frontend",
-      email: "tmdah900@gmail.com",
-      message: "go for it",
-      fileName: "seungmo",
-      fileURL: null,
-    },
-  });
-
+const Maker = ({ FileInput, authService, cardRepository }) => {
   const navigator = useNavigate();
+  const navigatorState = useLocation().state;
+  const [cards, setCards] = useState({});
+  const [userId, setUserId] = useState(navigatorState && navigatorState.id);
+
   const onLogout = () => {
     authService.logout();
   };
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    const stopSync = cardRepository.syncCards(userId, (cards) => {
+      setCards(cards);
+    });
+    return () => stopSync(); //component가 unmount 됐을때 불필요한 네트워크 사용을 최소화
+  }, [userId]); // mount됐을떄, userId가 바꼈을떄
+
   useEffect(() => {
     authService.onAuthChange((user) => {
       //user의 정보가 없다면 즉 로그아웃 됐다면 home으로 이동해라
-      if (!user) {
+      if (user) {
+        setUserId(user.uid);
+      } else {
         navigator("/");
       }
     });
@@ -61,6 +42,7 @@ const Maker = ({ FileInput, authService }) => {
       delete updated[card.id];
       return updated;
     });
+    cardRepository.removeCard(userId, card);
   };
   const handleUpdate = (card) => {
     // const updated = { ...cards }; //시시떄떄로 변하는 아이한테는 map이나 for을 돌리는건 성능에 상당히 좋지않다.
@@ -70,6 +52,7 @@ const Maker = ({ FileInput, authService }) => {
       updated[card.id] = card;
       return updated;
     });
+    cardRepository.saveCard(userId, card);
   };
   return (
     <section className={styles.wrapper}>
